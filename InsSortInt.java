@@ -4,6 +4,19 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class InsSortInt {
+    public static int[] intSort(int[] A){
+        for (int i =1; i < A.length; i++) {
+            int key = A[i];
+            int j = i - 1;
+
+            while (j >= 0 && A[j] > key) {
+                A[j + 1] = A[j];
+                j = j - 1;
+            }
+            A[j + 1] = key;
+        }
+        return A;
+    }
     public static void main(String[]args){
         ArrayList<String> numbersList = new ArrayList<>();
         try {
@@ -21,19 +34,9 @@ public class InsSortInt {
         for (int i = 0; i < numbersList.size(); i++) {
             A[i] = Integer.parseInt(numbersList.get(i));
         }
-        for (int i =1; i < A.length; i++) {
-            int key = A[i];
-            int j = i - 1;
-
-            while (j >= 0 && A[j] > key) {
-                A[j + 1] = A[j];
-                j = j - 1;
-            }
-            A[j + 1] = key;
-        }
+        A = intSort(A);
         System.out.println("Smallest Integer: " + A[0]);
         System.out.println("Largest Integer: " + A[A.length - 1]);
-        
     }
 
 }
